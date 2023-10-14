@@ -10,9 +10,9 @@ public class Input_Manager : MonoBehaviour
     private PlayerInputActions playerInputs;
 
     private float timeSinceJumpPressed = 0f;
-    private float timeSinceJumpPresseds = 0f;
-    private float timeSinceJumpPressedd = 0f;
-    private float timeSinceJumpPressedf = 0f;
+    //private float timeSinceJumpPresseds = 0f;
+    //private float timeSinceJumpPressedd = 0f;
+    //private float timeSinceJumpPressedf = 0f;
     private Vector2 leftAxisValue = Vector2.zero;
 
     private void Awake()
