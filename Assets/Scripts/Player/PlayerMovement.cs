@@ -6,29 +6,28 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    private Camera camera;
+
     private CharacterController controller;
 
     private Vector3 finalVelocity = Vector3.zero;
-    private Vector3 finalDirection = Vector3.zero;
 
-    [SerializeField] 
-    private float velocityXZ = 5f;
+    [SerializeField] private float velocityXZ = 5f;
 
-    [SerializeField]
-    private float gravity = 20f;
-
-    [SerializeField]
-    private float jumpForce = 8f;
+    [SerializeField] private float gravity = 20f;
+    [SerializeField] private float jumpForce = 8f;
     
-    [SerializeField]
-    private float coyoteTime = 1f;
+    [SerializeField] private float coyoteTime = 1f;
     
-    [SerializeField]
-    private float rotationSpeed = 1f;
+    [SerializeField] private float rotationSpeed = 1f;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+
+        //Bloquea cursor
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -36,24 +35,27 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // Calcular la dirección de movimiento
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        movementDirection.Normalize();
 
         // Calcular dirección XZ
-        Vector3 direction = Input.GetAxis("Vertical") * transform.forward + Input.GetAxis("Horizontal") * transform.right;
+        Vector3 direction = Quaternion.Euler(0f, camera.transform.eulerAngles.y, 0f) * new Vector3(horizontalInput, 0f, verticalInput);
         direction.Normalize();
 
-        // Rotar el personaje hacia la dirección de movimiento
-        if (movementDirection != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, Time.deltaTime * rotationSpeed);
-        }
-
+       
         // Calcular velocidad XZ
         finalVelocity.x = direction.x * velocityXZ;
         finalVelocity.z = direction.z * velocityXZ;
+
+
+        controller.Move(finalVelocity * Time.deltaTime);
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion desiredRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, 0.5f * Time.deltaTime);
+            gameObject.transform.forward = direction;
+        }
+
 
         // Asignar dirección Y
         direction.y = -1f;
@@ -83,11 +85,5 @@ public class PlayerMovement : MonoBehaviour
                 coyoteTime = 0f;
             }
         }
-
-        // Mover el personaje
-        controller.Move(finalVelocity * Time.deltaTime);
-
-        // Hacer que el personaje mire hacia donde camina
-        finalDirection = movementDirection * rotationSpeed;
     }
 }
