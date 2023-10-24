@@ -17,8 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float gravity = 20f;
     [SerializeField] private float jumpForce = 8f;
-    
     [SerializeField] private float coyoteTime = 1f;
+
+    [SerializeField] private float maxJumps = 3f;
+    [SerializeField] private float jumpsDelay = 3f;
     
     [SerializeField] private float rotationSpeed = 1f;
 
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
 
-        // Calcular dirección XZ
+        // Calcular dirección XZ (movimiento)
         Vector3 direction = Quaternion.Euler(0f, camera.transform.eulerAngles.y, 0f) * new Vector3(horizontalInput, 0f, verticalInput);
         direction.Normalize();
 
@@ -60,17 +62,46 @@ public class PlayerMovement : MonoBehaviour
         // Asignar dirección Y
         direction.y = -1f;
 
-        // Calcular gravedad
+        // Calcular gravedad 
         if (controller.isGrounded)
         {
-            if (Input.GetKey(KeyCode.Space))
+            // El contador va bajando hasta que llega a 0
+            jumpsDelay -= Time.deltaTime;
+
+            // Primer Salto
+            //if (Input_Manager._INPUT_MANAGER.GetJumpButtonPressed() && maxJumps == 3)
+            if (Input.GetKey(KeyCode.Space) && maxJumps == 3)
             {
                 finalVelocity.y = jumpForce;
+                maxJumps--;
+                jumpsDelay = 3f;
+
             }
-            else
+
+            // Segundo Salto
+            else if (Input.GetKey(KeyCode.Space) && maxJumps == 2)
+            {
+                finalVelocity.y = jumpForce + 5;
+                maxJumps--;
+                jumpsDelay = 3f;
+
+            }
+
+            // Tercer Salto
+            else if (Input.GetKey(KeyCode.Space) && maxJumps == 1)
+            {
+                finalVelocity.y = jumpForce + 10;
+                maxJumps--;
+                jumpsDelay = 3f;
+
+            }
+
+            else 
             {
                 finalVelocity.y = direction.y * gravity * Time.deltaTime;
                 coyoteTime = 1f;
+                maxJumps = 3;
+                //jumpsDelay = 5f;
             }
 
         }

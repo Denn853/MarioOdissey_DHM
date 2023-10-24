@@ -68,6 +68,11 @@ public class Input_Manager : MonoBehaviour
         return this.timeSinceJumpPressed == 0f;
     }
 
+    public bool GetJumpButtonPressed()
+    {
+        return this.timeSinceJumpPressed == 0f;
+    }
+
     //public bool GetEastButtonPressed()
     //{
     //    return this.timeSinceJumpPressed == 0f;
