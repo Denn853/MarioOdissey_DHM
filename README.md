@@ -15,7 +15,7 @@ elementos whitebox
 # Contenidos:
 ## Personaje principal (2 puntos)
 Las mecánicas a replicar del movimiento de Mario son:
-- [ ] Movimiento relativo a la orientación de la cámara con aceleración.
+- [x] Movimiento relativo a la orientación de la cámara con aceleración.
 - [ ] Salto, doble salto y triple salto.
 - [ ]  Agacharse y andar agachado.
 - [ ]  Salto largo y mortal hacía atrás.
