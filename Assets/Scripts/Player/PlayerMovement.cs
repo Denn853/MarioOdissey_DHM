@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
             jumpsDelay -= Time.deltaTime;
 
             // Primer Salto
-            //if (Input_Manager._INPUT_MANAGER.GetJumpButtonPressed() && maxJumps == 3)
+            //if (Input_Manager._INPUT_MANAGER.GetSouthButtonPressed() && maxJumps == 3)
             if (Input.GetKey(KeyCode.Space) && maxJumps == 3)
             {
                 finalVelocity.y = jumpForce;
@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
-            // Tercer Salto
+            // Tercer Salto.
             else if (Input.GetKey(KeyCode.Space) && maxJumps == 1)
             {
                 finalVelocity.y = jumpForce + 10;
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
-            else 
+            else if (maxJumps == 0 && jumpsDelay < 3f)
             {
                 finalVelocity.y = direction.y * gravity * Time.deltaTime;
                 coyoteTime = 1f;

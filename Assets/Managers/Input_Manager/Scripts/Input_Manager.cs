@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,7 +71,13 @@ public class Input_Manager : MonoBehaviour
 
     public bool GetJumpButtonPressed()
     {
+        Debug.Log("Entro");
         return this.timeSinceJumpPressed == 0f;
+    }
+
+    internal bool GetJumpButtonPressed(PlayerMovement playerMovement)
+    {
+        throw new NotImplementedException();
     }
 
     //public bool GetEastButtonPressed()
