@@ -67,9 +67,9 @@ public class PlayerMovement : MonoBehaviour
         {
             // El contador va bajando hasta que llega a 0
             jumpsDelay -= Time.deltaTime;
-
+            /*
             // Primer Salto
-            //if (Input_Manager._INPUT_MANAGER.GetSouthButtonPressed() && maxJumps == 3)
+            //if (Input_Manager._INPUT_MANAGER.GetJumpButtonPressed() && maxJumps == 3)
             if (Input.GetKey(KeyCode.Space) && maxJumps == 3)
             {
                 finalVelocity.y = jumpForce;
@@ -101,9 +101,30 @@ public class PlayerMovement : MonoBehaviour
                 finalVelocity.y = direction.y * gravity * Time.deltaTime;
                 coyoteTime = 1f;
                 maxJumps = 3;
-                //jumpsDelay = 5f;
+                jumpsDelay = 3f;
+            }
+            */
+
+            // Resetear el contador cuando llega a 0
+            if (jumpsDelay <= 0f || maxJumps == 0)
+            {
+                jumpsDelay = 3f;
+                maxJumps = 3; // Reiniciar el número de saltos disponibles
             }
 
+            // Primer Salto
+            if (Input.GetKey(KeyCode.Space) && maxJumps > 0)
+            {
+                finalVelocity.y = jumpForce + (3 - maxJumps) * 5;
+                maxJumps--;
+                jumpsDelay = 3f;
+            }
+
+            else if (maxJumps == 0 && jumpsDelay < 3f)
+            {
+                finalVelocity.y = direction.y * gravity * Time.deltaTime;
+                coyoteTime = 1f;
+            }
         }
         else
         {
