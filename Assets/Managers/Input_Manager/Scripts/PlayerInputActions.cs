@@ -32,7 +32,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""ece13ef0-46a7-493f-9d0b-bbfde1e4b2ad"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2"",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
@@ -46,11 +46,20 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6c7f09c-93d8-4361-a10c-5dd67ad1d46d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Camera"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""c7c0afcd-c386-40df-bab4-a6646d16eb10"",
+                    ""id"": ""c0c516ee-77da-4bf1-8ea2-81fdeec1d6d0"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2"",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 }
@@ -69,31 +78,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3beea09a-4afa-4036-a59a-b0ecf24213e2"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f963bcee-9b87-4d15-b011-d4db2ad124b4"",
                     ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""97529e97-5032-43cf-ab39-5fe55988a78e"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
@@ -168,80 +155,47 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c04af795-186a-49be-8fd2-2c93890dc6ae"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""id"": ""0d7e3d25-6955-4da9-91d0-2a62dd9d8796"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""590b561f-748d-4a72-b44c-8e713413e26f"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": ""Press"",
+                    ""id"": ""09b26898-5853-45fd-af63-e33579854e00"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""84d9def7-e628-4178-bbbc-53395aa85540"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""78e8becc-416c-467e-830d-e393d9212f01"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Camera"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""1e373c11-1e8c-4ce0-ad8c-4752a6c383fe"",
-                    ""path"": ""<Mouse>/scroll/up"",
+                    ""name"": """",
+                    ""id"": ""4f9a948e-661c-4c9b-9d95-9116d1c7d7a5"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""b4a9c062-d99f-4def-8fdc-bdfad5931ebf"",
-                    ""path"": ""<Mouse>/scroll/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""139cb514-1a86-4a0f-92c8-42fbc6e260a5"",
-                    ""path"": ""<Mouse>/scroll/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""f17194b1-20e0-4c8f-a0a8-f11c9286076b"",
-                    ""path"": ""<Mouse>/scroll/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,6 +206,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
         m_Character_Move = m_Character.FindAction("Move", throwIfNotFound: true);
         m_Character_Jump = m_Character.FindAction("Jump", throwIfNotFound: true);
+        m_Character_Crouch = m_Character.FindAction("Crouch", throwIfNotFound: true);
         m_Character_Camera = m_Character.FindAction("Camera", throwIfNotFound: true);
     }
 
@@ -316,6 +271,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<ICharacterActions> m_CharacterActionsCallbackInterfaces = new List<ICharacterActions>();
     private readonly InputAction m_Character_Move;
     private readonly InputAction m_Character_Jump;
+    private readonly InputAction m_Character_Crouch;
     private readonly InputAction m_Character_Camera;
     public struct CharacterActions
     {
@@ -323,6 +279,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public CharacterActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Character_Move;
         public InputAction @Jump => m_Wrapper.m_Character_Jump;
+        public InputAction @Crouch => m_Wrapper.m_Character_Crouch;
         public InputAction @Camera => m_Wrapper.m_Character_Camera;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
@@ -339,6 +296,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
             @Camera.started += instance.OnCamera;
             @Camera.performed += instance.OnCamera;
             @Camera.canceled += instance.OnCamera;
@@ -352,6 +312,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
             @Camera.started -= instance.OnCamera;
             @Camera.performed -= instance.OnCamera;
             @Camera.canceled -= instance.OnCamera;
@@ -376,6 +339,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
     }
 }

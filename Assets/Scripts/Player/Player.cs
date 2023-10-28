@@ -18,9 +18,9 @@ public class Player : MonoBehaviour
         //{
         //    Debug.Log("Pressed-GetNorthButtonPressed");
         //}
-        if (inputManager.GetSouthButtonPressed())
+        if (inputManager.GetJumpButtonPressed())
         {
-            Debug.Log("Pressed-South");
+            Debug.Log("Pressed-Jump");
         }
         //if (inputManager.GetEastButtonPressed())
         //{

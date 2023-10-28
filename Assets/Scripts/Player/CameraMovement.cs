@@ -18,8 +18,8 @@ public class CameraMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        rotationX += Input.GetAxis("Mouse Y");
-        rotationY += Input.GetAxis("Mouse X");
+        //rotationX += Input.GetAxis("Mouse Y");
+        //rotationY += Input.GetAxis("Mouse X");
 
         rotationX = Mathf.Clamp(rotationX, -50f, 50f);
 
