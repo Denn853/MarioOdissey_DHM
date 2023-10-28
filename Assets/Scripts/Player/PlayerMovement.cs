@@ -39,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCounter = 0;
 
 
+    [Header("Crouch")]
+    public bool canCrouch = false;
+
 
 
     private void Awake()
@@ -54,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         TripleJump();
+        Crouch();
     }
 
 
@@ -124,21 +128,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (inputManager.GetCrouchButtonPressed())
         {
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && crouch == false)
-        {
-            crouch = true;
-        }
-        else if (!Input.GetKey(KeyCode.LeftShift) && crouch == true)
-        {
-            crouch = false;
-        }
-        if (crouch == true)
-        {
-            finalVelocity *= 0.5f;
-            controller.height = 1f;
-
+            finalVelocity /= 0.5f;
+            controller.height = 0.8f;
         }
         else
         {
