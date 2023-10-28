@@ -16,7 +16,7 @@ elementos whitebox
 ## Personaje principal (2 puntos)
 Las mecánicas a replicar del movimiento de Mario son:
 - [x] Movimiento relativo a la orientación de la cámara con aceleración.
-- [ ] Salto, doble salto y triple salto.
+- [x] Salto, doble salto y triple salto.
 - [ ]  Agacharse y andar agachado.
 - [ ]  Salto largo y mortal hacía atrás.
 - [ ]  Salto rebote a pared.
@@ -49,7 +49,7 @@ control del personaje:
 ## Cámara (1.5 puntos)
 Se espera que la cámara acompañe el gameplay:
 - [ ] Siguiendo el jugador a una cierta distancia y evitando la pérdida de visión.
-- [ ] Siendo capaz de orbitar alrededor del personaje controlado a voluntad del
+- [x] Siendo capaz de orbitar alrededor del personaje controlado a voluntad del
 jugador.
 
 ## Criterio del profesor (1.5 puntos)
