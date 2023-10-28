@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,11 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 finalVelocity = Vector3.zero;
     private Vector3 followDirecction = Vector3.zero;
 
-
     
     [Header("Movement")]
-    [SerializeField] private float maxVelocity = 8f; // velocityXZ
-                     private float velocity = 0f; // velocityXZ
+    [SerializeField] private float maxVelocity = 8f; // max velocityXZ
+                     private float velocity = 0f; // initial velocityXZ
     [SerializeField] private float acceleration = 5f; 
     [SerializeField] private float decceleration = 5f;
 
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Crouch")]
-    public bool canCrouch = false;
+    [SerializeField] private bool canCrouch;
 
 
 
@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.5f * Time.deltaTime);
             gameObject.transform.forward = direction;
+
 
             // acceleration
             velocity += acceleration * Time.deltaTime;
@@ -124,12 +125,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     private void Crouch()
     {
-        if (inputManager.GetCrouchButtonPressed())
+        if (inputManager.GetCrouchButtonPressed() && canCrouch == false)
         {
-            finalVelocity /= 0.5f;
-            controller.height = 0.8f;
+            canCrouch = true;
+        }
+        else
+        {
+            canCrouch = false;
+        }
+
+        if (canCrouch == true)
+        {
+            finalVelocity *= 0.5f;
+            controller.height = 1f;
         }
         else
         {

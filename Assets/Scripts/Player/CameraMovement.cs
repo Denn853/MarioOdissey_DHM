@@ -22,9 +22,7 @@ public class CameraMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        //rotationX += Input.GetAxis("Mouse Y");
-        //rotationY += Input.GetAxis("Mouse X");
-
+        
         // Camera movement (orbit)
         rotationX += inputManager.GetRightAxisValue().y;
         rotationY += inputManager.GetRightAxisValue().x;

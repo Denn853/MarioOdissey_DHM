@@ -367,8 +367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2064069017}
-  targetDistance: 5
-  cameraLerp: 6
+  targetDistance: 10
+  cameraLerp: 12
 --- !u!1 &2064069017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7006424380092102332, guid: 5a8cb345da21ac94a8968914dfdb413f, type: 3}
@@ -530,6 +530,14 @@ PrefabInstance:
     - target: {fileID: 7006424380092102332, guid: 5a8cb345da21ac94a8968914dfdb413f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006424380092102332, guid: 5a8cb345da21ac94a8968914dfdb413f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178379445807924824, guid: 5a8cb345da21ac94a8968914dfdb413f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

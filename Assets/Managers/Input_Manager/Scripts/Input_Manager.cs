@@ -10,8 +10,8 @@ public class Input_Manager : MonoBehaviour
 
     private PlayerInputActions playerInputs;
 
-    private Vector2 rightAxisValue = Vector2.zero;  //Mouse
-    private Vector2 leftAxisValue = Vector2.zero;   //Keyboard
+    private Vector2 rightAxisValue = Vector2.zero;  //Mouse [CAMERA]
+    private Vector2 leftAxisValue = Vector2.zero;   //Keyboard [WASD]
 
     private bool jumpButtonPressed = false;
     private bool crouchButtonPressed = false;
