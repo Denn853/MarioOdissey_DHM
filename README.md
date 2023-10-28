@@ -48,7 +48,7 @@ control del personaje:
 
 ## Cámara (1.5 puntos)
 Se espera que la cámara acompañe el gameplay:
-- [ ] Siguiendo el jugador a una cierta distancia y evitando la pérdida de visión.
+- [x] Siguiendo el jugador a una cierta distancia y evitando la pérdida de visión.
 - [x] Siendo capaz de orbitar alrededor del personaje controlado a voluntad del
 jugador.
 
