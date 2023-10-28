@@ -10,12 +10,16 @@ public class Input_Manager : MonoBehaviour
 
     private PlayerInputActions playerInputs;
 
-    private float timeSinceJumpPressed = 0f;
-    private Vector2 leftAxisValue = Vector2.zero;
+    private Vector2 rightAxisValue = Vector2.zero;  //Mouse
+    private Vector2 leftAxisValue = Vector2.zero;   //Keyboard
 
     private bool jumpButtonPressed = false;
     private bool crouchButtonPressed = false;
 
+    private float timeSinceJumpPressed = 0f;
+    private float timeSinceCrouchPressed = 0f;
+    
+    
     private void Awake()
     {
         // Compruebo existencia de instancias al input manager
@@ -31,9 +35,10 @@ public class Input_Manager : MonoBehaviour
             playerInputs.Character.Enable();
 
             //Delegates
-            playerInputs.Character.Move.performed += leftAxisUpdate;
-            playerInputs.Character.Jump.performed += jumpButtonUpdate;
-            playerInputs.Character.Crouch.performed += crouchButtonUpdate;
+            playerInputs.Character.Camera.performed += RightAxisUpdate;
+            playerInputs.Character.Move.performed += LeftAxisUpdate;
+            playerInputs.Character.Jump.performed += JumpButtonUpdate;
+            playerInputs.Character.Crouch.performed += CrouchButtonUpdate;
 
 
             _INPUT_MANAGER = this;
@@ -43,57 +48,61 @@ public class Input_Manager : MonoBehaviour
 
     private void Update()
     {
-        timeSinceJumpPressed += Time.deltaTime;
         jumpButtonPressed = false;
         crouchButtonPressed = false;
+
+        timeSinceJumpPressed += Time.deltaTime;
+        timeSinceCrouchPressed += Time.deltaTime;
 
         InputSystem.Update();
     }
 
 
+
+    /// ------------------------------ FUNCTIONS
+
+    //CAMERA
+    private void RightAxisUpdate(InputAction.CallbackContext context)
+    {
+        rightAxisValue = context.ReadValue<Vector2>();
+    }
+
     //MOVEMENT
-    private void leftAxisUpdate(InputAction.CallbackContext context)
+    private void LeftAxisUpdate(InputAction.CallbackContext context)
     {
         leftAxisValue = context.ReadValue<Vector2>();
-
-        Debug.Log("Magnitude: " + leftAxisValue.magnitude);
-        Debug.Log("Normalize: " + leftAxisValue.normalized);
     }
 
     //JUMP
-    private void jumpButtonUpdate(InputAction.CallbackContext context)
+    private void JumpButtonUpdate(InputAction.CallbackContext context)
     {
         jumpButtonPressed = true;
         timeSinceJumpPressed = 0f;
     }
 
     //CROUCH
-    private void crouchButtonUpdate(InputAction.CallbackContext context)
+    private void CrouchButtonUpdate(InputAction.CallbackContext context)
     {
         crouchButtonPressed = true;
     }
 
 
+
+    /// ------------------------------ GETTERS
+
+    //CAMERA
+    public Vector2 GetRightAxisValue() { return rightAxisValue; }
+
     //MOVEMENT
-    public Vector2 GetLeftAxisValue()
-    {
-        return leftAxisValue;
-    }
+    public Vector2 GetLeftAxisValue() { return leftAxisValue; }
 
     //JUMP
-    public bool GetJumpButtonPressed()
-    {
-        return jumpButtonPressed;
-    }
+    public bool GetJumpButtonPressed() { return jumpButtonPressed; }
 
-    public float GetJumpButtonPressedTime()
-    {
-        return timeSinceJumpPressed;
-    }
+    public float GetJumpButtonPressedTime() { return timeSinceJumpPressed; }
 
     //CROUCH
-    public bool GetCrouchButtonPressed()
-    {
-        return crouchButtonPressed;
-    }
+    public bool GetCrouchButtonPressed() { return crouchButtonPressed; }
+
+    public float GetCrouchButtonPressedTime() { return timeSinceCrouchPressed; }
 }
