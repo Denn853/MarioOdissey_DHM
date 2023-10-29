@@ -36,7 +36,7 @@ ciertas animaciones.
 Por el nivel habrá diversos elementos repartidos que interactúan de la
 siguiente forma al entrar en contacto con el jugador:
 - [ ] Elementos estáticos que matan al jugador, al morir se reinicia el nivel.
-- [ ] Estrellas esparcidas por el mundo, cuando el jugador recolecta X cantidad
+- [x] Estrellas esparcidas por el mundo, cuando el jugador recolecta X cantidad
 gana la partida. Cuando una moneda es recogida desaparece del nivel.
 - [ ] Plataformas de rebote que impulsaran el jugador hacía una dirección.
 
@@ -56,3 +56,11 @@ jugador.
 Este último apartado quedará a criterio del profesor donde se evaluarán
 otros elementos como la organización del proyecto, calidad de código, mecánicas
 adicionales implementadas, sensación de juego, etcétera...
+
+
+# IGNORE
+## Cosas que no son mías
+- Modelos 3D
+- Audios
+  - Audio Code
+
