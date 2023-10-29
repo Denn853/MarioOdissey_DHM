@@ -40,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpTimer = 0f;
 
 
+    private bool isInJumpPlatform = false;
+    private float jumpPlatformForce = 0.05f;
+
+
     [Header("Crouch")]
     [SerializeField] private bool canCrouch;
 
@@ -104,7 +108,33 @@ public class PlayerMovement : MonoBehaviour
         // Aplica gravedad dependiendo si esta en el suelo o no
         finalVelocity.y += direction.y * gravity * Time.deltaTime;
 
+
+        if (isInJumpPlatform)
+        {
+            Vector3 jumpVector = Vector3.up * jumpPlatformForce;
+            controller.Move(jumpVector);
+        }
+        else
+        {
+            controller.Move(finalVelocity * Time.deltaTime);
+        }
+
         controller.Move(finalVelocity * Time.deltaTime);
+    }
+
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("JumpPlatform") && !isInJumpPlatform)
+        {
+            Debug.Log(hit.gameObject.tag);
+            // Detectamos la colisión con la plataforma de rebote y aplicamos el impulso hacia arriba
+            isInJumpPlatform = true;
+        }
+        else
+        {
+            isInJumpPlatform = false;
+        }
     }
 
 
