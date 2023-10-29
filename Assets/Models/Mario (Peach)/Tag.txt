@@ -1,6 +1,0 @@
-Game: Super Mario Odyssey
-Subject: Mario (Peach)
-Copyright: Nintendo
-Model Rippers: Random Talking Bush and SciresM
-Hosting Permissions: The Models Resource
-Notes: The "Short" cap is used for the Bowser and Explorer outfits.

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private Audio_Manager audioManager;
-    [SerializeField] private AudioClip dieSound;
+    //private Audio_Manager audioManager;
+    //[SerializeField] private AudioClip dieSound;
 
     [SerializeField] private GameObject player;
 
@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Start()
     {
-        audioManager = Audio_Manager._AUDIO_MANAGER;
+        //audioManager = Audio_Manager._AUDIO_MANAGER;
     }
 
     private void OnTriggerEnter(Collider other)
