@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &55914901
@@ -776,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &356035488
@@ -1124,6 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &534489805
@@ -1486,6 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &798259804
@@ -2303,6 +2307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1324368067
@@ -2348,6 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1342415192
@@ -2393,6 +2399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1355550633
@@ -2438,6 +2445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1398867497
@@ -2917,6 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1487021853
@@ -2962,6 +2971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1522759358
@@ -3007,6 +3017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1543954640
@@ -3052,6 +3063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1592549671
@@ -3382,6 +3394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1834682526
@@ -3560,6 +3573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dca62e63b9cc0499888d997f527b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieSound: {fileID: 8300000, guid: 9ad8183aa4d4bec4e90989277e4340e0, type: 3}
   player: {fileID: 770975614}
   UI: {fileID: 2043775112}
 --- !u!65 &1948189389
