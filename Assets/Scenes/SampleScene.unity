@@ -1388,7 +1388,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6dcf759867bfc4ef0b52caed976f7996, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1509,6 +1509,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 356531457266685645, guid: b355dfb5133464544adfd479839ceab0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 63a7a44a03b04434b941e895fcb5ac68, type: 2}
     - target: {fileID: 473187149106757845, guid: b355dfb5133464544adfd479839ceab0, type: 3}
       propertyPath: m_Name
       value: Stage
@@ -1517,6 +1521,34 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5.43
       objectReference: {fileID: 0}
+    - target: {fileID: 3817884569588968477, guid: b355dfb5133464544adfd479839ceab0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c81638b3753872e499b7d86a071b6e32, type: 2}
+    - target: {fileID: 4484803060630591420, guid: b355dfb5133464544adfd479839ceab0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fcf39a428c6cbfb48b1aca53c52bb11f, type: 2}
+    - target: {fileID: 5378838427337023649, guid: b355dfb5133464544adfd479839ceab0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c81638b3753872e499b7d86a071b6e32, type: 2}
+    - target: {fileID: 7394185734094854354, guid: b355dfb5133464544adfd479839ceab0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fcf39a428c6cbfb48b1aca53c52bb11f, type: 2}
+    - target: {fileID: 8021100271651920703, guid: b355dfb5133464544adfd479839ceab0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 648a8630c958c0b49af39a9751448a70, type: 2}
+    - target: {fileID: 8134330530389492078, guid: b355dfb5133464544adfd479839ceab0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 648a8630c958c0b49af39a9751448a70, type: 2}
+    - target: {fileID: 8265469372051734384, guid: b355dfb5133464544adfd479839ceab0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 648a8630c958c0b49af39a9751448a70, type: 2}
     - target: {fileID: 8646213819509321544, guid: b355dfb5133464544adfd479839ceab0, type: 3}
       propertyPath: m_LocalScale.z
       value: 34.828
