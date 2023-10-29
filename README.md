@@ -62,6 +62,7 @@ adicionales implementadas, sensación de juego, etcétera...
 ## Cosas que no son mías
 - Modelos 3D
 - Animaciones del Player
+- Materials
 - Audios
   - Audio Code
 
