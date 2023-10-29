@@ -7,10 +7,12 @@ public class CameraMovement : MonoBehaviour
     private Input_Manager inputManager;
 
     [SerializeField] private GameObject target;
-
     [SerializeField] private float targetDistance;
+    private Vector3 finalTargetPossition;
 
     [SerializeField] private float cameraLerp; //12f
+
+    [SerializeField] private Vector3 offset = Vector3.zero; //(0, 2, 0)
 
     private float rotationX;
     private float rotationY;
@@ -22,7 +24,11 @@ public class CameraMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        
+
+        //offset = new Vector3(0f, 1f, 0f);
+        finalTargetPossition = target.transform.position + offset;
+
+
         // Camera movement (orbit)
         rotationX += inputManager.GetRightAxisValue().y;
         rotationY += inputManager.GetRightAxisValue().x;
@@ -31,13 +37,13 @@ public class CameraMovement : MonoBehaviour
 
         transform.eulerAngles = new Vector3(rotationX, rotationY, 0);
 
-        Vector3 finalPosition = Vector3.Lerp(transform.position, target.transform.position - transform.forward * targetDistance, cameraLerp * Time.deltaTime);
+        Vector3 finalPosition = Vector3.Lerp(transform.position, finalTargetPossition - transform.forward * targetDistance, cameraLerp * Time.deltaTime);
 
 
         // Camera don't touch walls
         RaycastHit hit;
 
-        if (Physics.Linecast(target.transform.position, finalPosition, out hit))
+        if (Physics.Linecast(finalTargetPossition, finalPosition, out hit))
         {
             finalPosition = hit.point;
         }

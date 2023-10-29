@@ -13,9 +13,6 @@ public class Input_Manager : MonoBehaviour
     private Vector2 rightAxisValue = Vector2.zero;  //Mouse [CAMERA]
     private Vector2 leftAxisValue = Vector2.zero;   //Keyboard [WASD]
 
-    private bool jumpButtonPressed = false;
-    private bool crouchButtonPressed = false;
-
     private float timeSinceJumpPressed = 0f;
     private float timeSinceCrouchPressed = 0f;
     
@@ -48,9 +45,6 @@ public class Input_Manager : MonoBehaviour
 
     private void Update()
     {
-        jumpButtonPressed = false;
-        crouchButtonPressed = false;
-
         timeSinceJumpPressed += Time.deltaTime;
         timeSinceCrouchPressed += Time.deltaTime;
 
@@ -76,14 +70,13 @@ public class Input_Manager : MonoBehaviour
     //JUMP
     private void JumpButtonUpdate(InputAction.CallbackContext context)
     {
-        jumpButtonPressed = true;
         timeSinceJumpPressed = 0f;
     }
 
     //CROUCH
     private void CrouchButtonUpdate(InputAction.CallbackContext context)
     {
-        crouchButtonPressed = true;
+        timeSinceCrouchPressed = 0f;
     }
 
 
@@ -97,12 +90,8 @@ public class Input_Manager : MonoBehaviour
     public Vector2 GetLeftAxisValue() { return leftAxisValue; }
 
     //JUMP
-    public bool GetJumpButtonPressed() { return jumpButtonPressed; }
-
-    public float GetJumpButtonPressedTime() { return timeSinceJumpPressed; }
+    public bool GetJumpButtonPressed() { return timeSinceJumpPressed == 0; }
 
     //CROUCH
-    public bool GetCrouchButtonPressed() { return crouchButtonPressed; }
-
-    public float GetCrouchButtonPressedTime() { return timeSinceCrouchPressed; }
+    public bool GetCrouchButtonPressed() { return timeSinceCrouchPressed == 0; }
 }

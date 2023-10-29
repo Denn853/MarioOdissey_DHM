@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Camera")]
     [SerializeField] private Camera camera;
+
+    [SerializeField] private Animator animator;
 
 
     private CharacterController controller;
@@ -20,11 +17,11 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Movement")]
-    [SerializeField] private float maxVelocity = 8f; // max velocityXZ
+    [SerializeField] private float maxVelocity; // max velocityXZ // 8f
     private float velocity = 0f; // initial velocityXZ
-    [SerializeField] private float acceleration = 5f;
-    [SerializeField] private float decceleration = 5f;
-
+    [SerializeField] private float acceleration; //5f
+    [SerializeField] private float decceleration; //7f
+    
 
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed = 1f;
@@ -32,16 +29,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Jump")]
     [SerializeField] private float gravity = 20f;
-    [SerializeField] private float jumpForce = 8f;
+    [SerializeField] private float jumpForce;
 
     private int maxJumps = 2; // 3 jumps
     private float jumpIncrement = 5f;
     private int jumpCounter = 0;
     public float jumpTimer = 0f;
 
-
-    private bool isInJumpPlatform = false;
-    private float jumpPlatformForce = 0.05f;
+    private float jumpPlatformForce = 50f;
 
 
     [Header("Crouch")]
@@ -51,8 +46,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
         inputManager = Input_Manager._INPUT_MANAGER;
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
 
         //Bloquea cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -62,7 +58,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         TripleJump();
-        Crouch();
+        //Crouch();
+        
+        controller.Move(finalVelocity * Time.deltaTime);
     }
 
 
@@ -74,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         // Calcular dirección XZ (movimiento)
         Vector3 direction = Quaternion.Euler(0f, camera.transform.eulerAngles.y, 0f) * new Vector3(horizontalInput, 0f, verticalInput);
         direction.Normalize();
+
 
         if (direction != Vector3.zero)
         {
@@ -87,6 +86,10 @@ public class PlayerMovement : MonoBehaviour
             // acceleration
             velocity += acceleration * Time.deltaTime;
             followDirecction = direction;
+
+            //// Walk
+            //animator.SetBool("isWalking", true);
+
         }
         else
         {
@@ -94,6 +97,10 @@ public class PlayerMovement : MonoBehaviour
             velocity -= decceleration * Time.deltaTime;
             direction.x = followDirecction.x;
             direction.z = followDirecction.z;
+
+            //// Idle
+            //animator.SetBool("isWalking", false);
+            //animator.SetBool("isRunning", false);
         }
 
         velocity = Mathf.Clamp(velocity, 0f, maxVelocity);
@@ -105,44 +112,35 @@ public class PlayerMovement : MonoBehaviour
         // Asignar dirección Y
         direction.y = -1f;
 
-        // Aplica gravedad dependiendo si esta en el suelo o no
-        finalVelocity.y += direction.y * gravity * Time.deltaTime;
 
-
-        if (isInJumpPlatform)
+        /// -------------------- ANIMATIONS
+        if (velocity == 0)
         {
-            Vector3 jumpVector = Vector3.up * jumpPlatformForce;
-            controller.Move(jumpVector);
+            // Idle
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", false);
         }
-        else
+        else if (velocity < maxVelocity / 2 && velocity != 0)
         {
-            controller.Move(finalVelocity * Time.deltaTime);
+            // Walk
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isRunning", false);
         }
-
-        controller.Move(finalVelocity * Time.deltaTime);
-    }
-
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.CompareTag("JumpPlatform") && !isInJumpPlatform)
+        else if (velocity > maxVelocity / 2)
         {
-            Debug.Log(hit.gameObject.tag);
-            // Detectamos la colisión con la plataforma de rebote y aplicamos el impulso hacia arriba
-            isInJumpPlatform = true;
-        }
-        else
-        {
-            isInJumpPlatform = false;
+            // Run
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isRunning", true);
         }
     }
-
-
+ 
     private void TripleJump()
     {
         // Calcular gravedad 
         if (controller.isGrounded)
         {
+            finalVelocity.y = -1f * gravity * Time.deltaTime;
+
             if (inputManager.GetJumpButtonPressed())
             {
                 finalVelocity.y = jumpForce + jumpIncrement * jumpCounter;
@@ -156,7 +154,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     jumpCounter = 0;
                 }
-
             }
 
             jumpTimer -= Time.deltaTime;
@@ -166,13 +163,17 @@ public class PlayerMovement : MonoBehaviour
                 jumpCounter = 0;
             }
         }
+        else
+        {
+            finalVelocity.y += -1f * gravity * Time.deltaTime;
+        }
     }
-
 
     private void Crouch()
     {
-        if (inputManager.GetCrouchButtonPressed() && canCrouch == false)
+        if (Input.GetKey(KeyCode.LeftControl) && canCrouch == false)
         {
+            //Debug.Log("crouching");
             canCrouch = true;
         }
         else
@@ -190,4 +191,17 @@ public class PlayerMovement : MonoBehaviour
             controller.height = 2f;
         }
     }
+
+
+
+    public Vector3 superJump()
+    {
+        finalVelocity.y = jumpPlatformForce;
+        return finalVelocity;
+    }
+
+
+
+    
+    
 }
