@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 finalVelocity = Vector3.zero;
     private Vector3 followDirecction = Vector3.zero;
 
-    
+
     [Header("Movement")]
     [SerializeField] private float maxVelocity = 8f; // max velocityXZ
-                     private float velocity = 0f; // initial velocityXZ
-    [SerializeField] private float acceleration = 5f; 
+    private float velocity = 0f; // initial velocityXZ
+    [SerializeField] private float acceleration = 5f;
     [SerializeField] private float decceleration = 5f;
 
 
@@ -31,12 +31,13 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Jump")]
+    [SerializeField] private float gravity = 20f;
     [SerializeField] private float jumpForce = 8f;
-    private float gravity = 20f;
 
     private int maxJumps = 2; // 3 jumps
     private float jumpIncrement = 5f;
     private int jumpCounter = 0;
+    public float jumpTimer = 0f;
 
 
     [Header("Crouch")]
@@ -110,15 +111,27 @@ public class PlayerMovement : MonoBehaviour
     private void TripleJump()
     {
         // Calcular gravedad 
-        if (inputManager.GetJumpButtonPressed() && controller.isGrounded)
+        if (controller.isGrounded)
         {
-            finalVelocity.y = jumpForce + jumpIncrement * jumpCounter;
-
-            if (jumpCounter < maxJumps)
+            if (inputManager.GetJumpButtonPressed())
             {
-                jumpCounter++;
+                finalVelocity.y = jumpForce + jumpIncrement * jumpCounter;
+                jumpTimer = 0.5f;
+
+                if (jumpCounter < maxJumps)
+                {
+                    jumpCounter++;
+                }
+                else
+                {
+                    jumpCounter = 0;
+                }
+
             }
-            else
+
+            jumpTimer -= Time.deltaTime;
+
+            if (jumpTimer <= 0f)
             {
                 jumpCounter = 0;
             }
