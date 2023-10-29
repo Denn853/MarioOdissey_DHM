@@ -24,6 +24,8 @@ public class HatBehaviour : MonoBehaviour
     private void Update()
     {
 
+        transform.rotation = player.transform.rotation;
+
         if (inputManager.GetCappyButtonPressed())
         {
             throwCappy = true;

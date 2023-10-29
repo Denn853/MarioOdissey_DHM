@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
         // Calcular gravedad 
         if (controller.isGrounded)
         {
-            finalVelocity.y = -1f * gravity * Time.deltaTime;
+            //finalVelocity.y = -1f * gravity * Time.deltaTime;
 
             if (inputManager.GetJumpButtonPressed())
             {
@@ -193,15 +193,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-
     public Vector3 superJump()
     {
         finalVelocity.y = jumpPlatformForce;
         return finalVelocity;
     }
 
-
-
-    
-    
 }

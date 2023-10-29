@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class JumpPlatfomBehaviour : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
+    private PlayerMovement player;
 
     private void OnTriggerEnter(Collider other)
     {
-        player.superJump();
+        if (other == GameObject.FindGameObjectWithTag("Player"))
+        {
+            player.superJump();
+        }
     }
 }

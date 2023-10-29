@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class CoinBehaviour : MonoBehaviour
 {
-    private static int coinsCollected = 0;
+    private static int coinsCollected;
     
-    [SerializeField] private AudioClip pickCoinSound;
     private Audio_Manager audioManager;
+    [SerializeField] private AudioClip pickCoinSound;
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private winUI UI;
 
     [SerializeField] private float velocity = 2.0f;
     [SerializeField] private float maxDistance = 1.0f;
@@ -40,5 +42,16 @@ public class CoinBehaviour : MonoBehaviour
 
         float yMovement = maxDistance * Mathf.Sin(velocity * Time.time);
         transform.position = startPosition + new Vector3(0, yMovement, 0);
+        
+        Debug.Log(coinsCollected);
+
+        if (coinsCollected == 4)
+        {
+            Debug.Log(coinsCollected);
+            //audioManager.RunSound(winSound);
+            //UI.ShowWinUI();
+
+            Debug.Log("GAME OVER - YOU WIN :D");
+        }
     }
 }
