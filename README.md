@@ -26,8 +26,8 @@ Las mecánicas a replicar del movimiento de Mario son:
 Se espera que el personaje tenga unas animaciones para sus mecánicas
 básicas, puede usarse una animación procedural si el alumno lo prefiere para
 ciertas animaciones.
-- [ ] Idle.
-- [ ] Caminar/Correr.
+- [x] Idle.
+- [x] Caminar/Correr.
 - [ ] Salto.
 - [ ] Doble salto.
 - [ ] Triple salto.
@@ -43,8 +43,8 @@ gana la partida. Cuando una moneda es recogida desaparece del nivel.
 ## Inputs (1.5 puntos)
 Se espera que los controles del juego sean multiplataforma y permitan el
 control del personaje:
-- [ ] Usando teclado y ratón.
-- [ ] Usando un mando conectado al ordenador.
+- [x] Usando teclado y ratón.
+- [x] Usando un mando conectado al ordenador.
 
 ## Cámara (1.5 puntos)
 Se espera que la cámara acompañe el gameplay:
@@ -61,6 +61,7 @@ adicionales implementadas, sensación de juego, etcétera...
 # IGNORE
 ## Cosas que no son mías
 - Modelos 3D
+- Animaciones del Player
 - Audios
   - Audio Code
 
