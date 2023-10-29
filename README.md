@@ -17,7 +17,7 @@ elementos whitebox
 Las mecánicas a replicar del movimiento de Mario son:
 - [x] Movimiento relativo a la orientación de la cámara con aceleración.
 - [x] Salto, doble salto y triple salto.
-- [ ] Agacharse y andar agachado.
+- [x] Agacharse y andar agachado.
 - [ ] Salto largo y mortal hacía atrás.
 - [ ] Salto rebote a pared.
 - [ ] Lanzamiento de Cappy y mecánica de rebote al contactar con él.
@@ -35,7 +35,7 @@ ciertas animaciones.
 ## Colisiones (1.5 puntos)
 Por el nivel habrá diversos elementos repartidos que interactúan de la
 siguiente forma al entrar en contacto con el jugador:
-- [ ] Elementos estáticos que matan al jugador, al morir se reinicia el nivel.
+- [x] Elementos estáticos que matan al jugador, al morir se reinicia el nivel.
 - [x] Estrellas esparcidas por el mundo, cuando el jugador recolecta X cantidad
 gana la partida. Cuando una moneda es recogida desaparece del nivel.
 - [ ] Plataformas de rebote que impulsaran el jugador hacía una dirección.
