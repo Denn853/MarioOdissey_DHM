@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class CoinBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static int coinsCollected;
+    
+    [SerializeField] private AudioClip pickCoinSound;
+
+    private Audio_Manager audioManager;
+
+    private void Start()
     {
-        
+        coinsCollected = 0;
+        audioManager = Audio_Manager._AUDIO_MANAGER;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.CompareTag("Player"))
+        {
+            coinsCollected++;
+            audioManager.RunSound(pickCoinSound);
+            Destroy(gameObject);
+        }
     }
 }
