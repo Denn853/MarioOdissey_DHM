@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         TripleJump();
-        //Crouch();
+        Crouch();
         
         controller.Move(finalVelocity * Time.deltaTime);
     }
@@ -87,9 +87,6 @@ public class PlayerMovement : MonoBehaviour
             velocity += acceleration * Time.deltaTime;
             followDirecction = direction;
 
-            //// Walk
-            //animator.SetBool("isWalking", true);
-
         }
         else
         {
@@ -97,10 +94,6 @@ public class PlayerMovement : MonoBehaviour
             velocity -= decceleration * Time.deltaTime;
             direction.x = followDirecction.x;
             direction.z = followDirecction.z;
-
-            //// Idle
-            //animator.SetBool("isWalking", false);
-            //animator.SetBool("isRunning", false);
         }
 
         velocity = Mathf.Clamp(velocity, 0f, maxVelocity);
@@ -139,8 +132,6 @@ public class PlayerMovement : MonoBehaviour
         // Calcular gravedad 
         if (controller.isGrounded)
         {
-            //finalVelocity.y = -1f * gravity * Time.deltaTime;
-
             if (inputManager.GetJumpButtonPressed())
             {
                 finalVelocity.y = jumpForce + jumpIncrement * jumpCounter;
@@ -171,24 +162,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Crouch()
     {
-        if (Input.GetKey(KeyCode.LeftControl) && canCrouch == false)
+        if (Input_Manager._INPUT_MANAGER.GetCrouchButtonPressed())
         {
-            //Debug.Log("crouching");
-            canCrouch = true;
-        }
-        else
-        {
-            canCrouch = false;
-        }
-
-        if (canCrouch == true)
-        {
-            finalVelocity *= 0.5f;
-            controller.height = 1f;
-        }
-        else
-        {
-            controller.height = 2f;
+            if (!canCrouch)
+            {
+                canCrouch = true;
+                //anim.SetBool("isCrouch", true);
+                controller.height = 0.75f;
+                velocity = 2f;
+            }
+            else
+            {
+                canCrouch = false;
+                //anim.SetBool("isCrouch", false);
+                controller.height = 2.0f;
+                velocity = 5.0f;
+            }
         }
     }
 
