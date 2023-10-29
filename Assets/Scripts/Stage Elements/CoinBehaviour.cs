@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CoinBehaviour : MonoBehaviour
 {
-    private static int coinsCollected;
+    private static int coinsCollected = 0;
     
     [SerializeField] private AudioClip pickCoinSound;
     private Audio_Manager audioManager;

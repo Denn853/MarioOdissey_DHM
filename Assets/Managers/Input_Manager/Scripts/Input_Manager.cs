@@ -15,6 +15,8 @@ public class Input_Manager : MonoBehaviour
 
     private float timeSinceJumpPressed = 0f;
     private float timeSinceCrouchPressed = 0f;
+
+    private float timeSinceEPressed = 0f;
     
     
     private void Awake()
@@ -34,8 +36,9 @@ public class Input_Manager : MonoBehaviour
             //Delegates
             playerInputs.Character.Camera.performed += RightAxisUpdate;
             playerInputs.Character.Move.performed += LeftAxisUpdate;
-            playerInputs.Character.Jump.performed += JumpButtonUpdate;
-            playerInputs.Character.Crouch.performed += CrouchButtonUpdate;
+            playerInputs.Character.Jump.performed += SpaceButtonUpdate;
+            playerInputs.Character.Crouch.performed += LeftControlButtonUpdate;
+            playerInputs.Character.Cappy.performed += EButtonUpdate;
 
 
             _INPUT_MANAGER = this;
@@ -47,6 +50,7 @@ public class Input_Manager : MonoBehaviour
     {
         timeSinceJumpPressed += Time.deltaTime;
         timeSinceCrouchPressed += Time.deltaTime;
+        timeSinceEPressed += Time.deltaTime;
 
         InputSystem.Update();
     }
@@ -68,17 +72,22 @@ public class Input_Manager : MonoBehaviour
     }
 
     //JUMP
-    private void JumpButtonUpdate(InputAction.CallbackContext context)
+    private void SpaceButtonUpdate(InputAction.CallbackContext context)
     {
         timeSinceJumpPressed = 0f;
     }
 
     //CROUCH
-    private void CrouchButtonUpdate(InputAction.CallbackContext context)
+    private void LeftControlButtonUpdate(InputAction.CallbackContext context)
     {
         timeSinceCrouchPressed = 0f;
     }
 
+    //CAPPY
+    private void EButtonUpdate(InputAction.CallbackContext context)
+    {
+        timeSinceEPressed = 0f;
+    }
 
 
     /// ------------------------------ GETTERS
@@ -94,4 +103,7 @@ public class Input_Manager : MonoBehaviour
 
     //CROUCH
     public bool GetCrouchButtonPressed() { return timeSinceCrouchPressed == 0; }
+
+    //CAPPY
+    public bool GetCappyButtonPressed() { return timeSinceEPressed == 0; }
 }
